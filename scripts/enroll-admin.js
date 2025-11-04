@@ -13,7 +13,7 @@ const caUrl = `https://${caEndpoint}`;
 const caName = utilities.getCaName(caEndpoint);
 
 // Enroll the admin only on creation
-exports.handler = async (event) => {
+async function main() {
   
   try {
     // Get the TLS cert from S3
@@ -35,3 +35,5 @@ exports.handler = async (event) => {
   }
 
 };
+
+main();
