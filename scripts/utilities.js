@@ -9,8 +9,8 @@ const {
   SecretsManagerClient,
 } = require('@aws-sdk/client-secrets-manager');
 
-const s3Client = new S3Client();
-const smClient = new SecretsManagerClient();
+const s3Client = new S3Client({region:'us-east-1'});
+const smClient = new SecretsManagerClient({region:'us-east-1'});
 
 // Convert a ReadableStream to a string
 async function streamToString(stream) {
