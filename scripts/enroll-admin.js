@@ -31,8 +31,10 @@ async function main() {
     // Enroll the admin user, and import the new identity into Secrets Manager
     const enrollment = await ca.enroll({ enrollmentID: 'admin', enrollmentSecret: adminPwd });
     console.log('enrollment',enrollment)
-    await utilities.putSecret(privateKeyArn, enrollment.key.toBytes());
-    await utilities.putSecret(signedCertArn, enrollment.certificate);
+    const privateKeyArnOutput = await utilities.putSecret(privateKeyArn, enrollment.key.toBytes());
+    console.log('privateKeyArnOutput', privateKeyArnOutput)
+    const signedCertArnOutput = await utilities.putSecret(signedCertArn, enrollment.certificate);
+    console.log('signedCertArnOutput', signedCertArnOutput)
   } catch (error) {
     console.error(`Failed to enroll admin user: ${error}`);
   }
