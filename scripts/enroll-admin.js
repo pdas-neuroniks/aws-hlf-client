@@ -16,7 +16,7 @@ const signedCertArn = process.env.SIGNED_CERT_ARN;
 const tlsCertBucket = process.env.TLS_CERT_BUCKET;
 const tlsCertKey = process.env.TLS_CERT_KEY;
 
-const WALLET_PATH = '../wallet';
+const WALLET_PATH = `../wallet`;
 const adminUserId='admin'
 const caUrl = `https://${caEndpoint}`;
 const caName = utilities.getCaName(caEndpoint);
