@@ -11,7 +11,7 @@
 sudo apt-get install -y jq
 
 sleep 5
-sudo systemctl status docker
+
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo usermod -a -G docker $USER
@@ -20,6 +20,8 @@ sudo usermod -a -G docker $USER
 sleep 5
 wget https://go.dev/dl/go1.14.4.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.14.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
 
 sleep 5
 sudo apt-cache show nodejs
