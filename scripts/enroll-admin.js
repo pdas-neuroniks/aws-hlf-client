@@ -2,12 +2,12 @@ const FabricCAClient = require('fabric-ca-client');
 const utilities = require('./utilities');
 
 // Extract environment variables
-const adminPasswordArn = 'arn:aws:secretsmanager:us-east-1:108625623765:secret:BlockcedeDevHLFNetworkAdmin-oJeJ4OBnlelE-CHtju7' || process.env.ADMIN_PASSWORD_ARN;
-const caEndpoint = 'ca.m-vfdlclj4vbbttjf5zccs4kwmlm.n-mg5a2tjkybbapklh6gxvba427m.managedblockchain.us-east-1.amazonaws.com:30002' || process.env.CA_ENDPOINT;
-const privateKeyArn = 'arn:aws:secretsmanager:us-east-1:108625623765:secret:BlockcedeDevHLFNetworkAdmin-sM88vgxOrHSF-1gXezU' || process.env.PRIVATE_KEY_ARN;
-const signedCertArn = 'arn:aws:secretsmanager:us-east-1:108625623765:secret:BlockcedeDevHLFNetworkAdmin-2esplnxfwze0-M5M84i' || process.env.SIGNED_CERT_ARN;
-const tlsCertBucket = 'us-east-1.managedblockchain' || process.env.TLS_CERT_BUCKET;
-const tlsCertKey = 'etc/managedblockchain-tls-chain.pem' || process.env.TLS_CERT_KEY;
+const adminPasswordArn = process.env.ADMIN_PASSWORD_ARN;
+const caEndpoint = process.env.CA_ENDPOINT;
+const privateKeyArn = process.env.PRIVATE_KEY_ARN;
+const signedCertArn = process.env.SIGNED_CERT_ARN;
+const tlsCertBucket = process.env.TLS_CERT_BUCKET;
+const tlsCertKey = process.env.TLS_CERT_KEY;
 
 const caUrl = `https://${caEndpoint}`;
 const caName = utilities.getCaName(caEndpoint);
