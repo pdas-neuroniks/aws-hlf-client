@@ -6,29 +6,6 @@
 
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
-
-const {CCP_PATH} = require('../api/controllers/utils/env')
-
-exports.buildCCPOrg = (org) => {
-
-    // load the common connection configuration file
-
-    const ccpPath = path.join(CCP_PATH, `connection-org${org}.json`); //path.resolve(__dirname, 'connection-profile', 'connection-org2.json');
-    const fileExists = fs.existsSync(ccpPath);
-    if (!fileExists) {
-        throw new Error(`no such file or directory: ${ccpPath}`);
-    }
-    const contents = fs.readFileSync(ccpPath, 'utf8');
-
-    // build a JSON object from the file contents
-    const ccp = JSON.parse(contents);
-
-    console.log(`Loaded the network configuration located at ${ccpPath}`);
-    return ccp;
-};
 
 exports.buildWallet = async(Wallets, walletPath) => {
     // Create a new  wallet : Note that wallet is for managing identities.
