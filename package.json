@@ -10,6 +10,7 @@
     "@aws-sdk/client-secrets-manager": "^3.922.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^17.2.3",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "fabric-ca-client": "^2.2.3",
