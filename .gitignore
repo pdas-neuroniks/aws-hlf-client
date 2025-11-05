@@ -31,3 +31,5 @@ __snapshots__/
 # Other common temporary files
 tmp/
 temp/
+
+templates
