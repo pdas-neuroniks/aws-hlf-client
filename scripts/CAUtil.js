@@ -6,7 +6,6 @@
 
 'use strict';
 
-const {ADMIN_USER_NAME} = require('../api/controllers/utils/env')
 
 const adminUserId = 'admin';
 const adminUserPasswd = 'adminpw';
