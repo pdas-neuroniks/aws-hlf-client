@@ -2,6 +2,7 @@ const FabricCAClient = require('fabric-ca-client');
 const { Wallets } = require('fabric-network');
 const utilities = require('./utilities');
 const { buildWallet } = require('./AppUtil');
+const path = require('path');
 require('dotenv').config('../.env');
 console.log(process.env)
 
