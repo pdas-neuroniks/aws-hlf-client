@@ -1,5 +1,8 @@
 const FabricCAClient = require('fabric-ca-client');
 const utilities = require('./utilities');
+require('dotenv').config()
+console.log(process.env)
+
 
 // Extract environment variables
 const adminPasswordArn = process.env.ADMIN_PASSWORD_ARN;
