@@ -13,7 +13,7 @@ const helper = require('../../../scripts/AppUtil');
 
 
 function consolelog(message, param = '') {
-    if (DEBUG) console.log('[network:info]', message, param)
+    if (true) console.log('[network:info]', message, param)
 }
 
 
