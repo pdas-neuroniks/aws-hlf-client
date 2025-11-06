@@ -49,9 +49,9 @@ module.exports = {
             const connectOptions = {
                 wallet,
                 identity: _identity,
-                discovery: { enabled: true, asLocalhost: false }
+                discovery: { enabled: true, asLocalhost: true }
             }
-            consolelog("connectOptions checked")
+            consolelog("connectOptions checked", connectOptions)
             const gateway = new Gateway();
             await gateway.connect(ccp, connectOptions);
             consolelog("gateway checked")
