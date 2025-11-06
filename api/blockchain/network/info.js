@@ -32,7 +32,7 @@ module.exports = {
 
             const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
             const wallet = await Wallets.newFileSystemWallet(walletPath);
-            
+            consolelog(wallet)
 
             let identity = await wallet.get(_identity);
             if (!identity) {
