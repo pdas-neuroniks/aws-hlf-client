@@ -99,7 +99,7 @@ module.exports = {
             return res.status(400).json({
                 status: true,
                 chaininfo: null,
-                errorMessage: error.message
+                errorMessage: JSON.stringify(error)
             })
 
         }
