@@ -18,8 +18,8 @@ router.get('/ping', function(rew, res){
     }
 })
 
-// const ctrlEnroll = require('../blockchain/network/enroll');
-// router.post('/network/enroll', ctrlEnroll.enroll)
+const ctrlEnroll = require('../blockchain/network/enroll');
+router.post('/network/enroll', ctrlEnroll.enroll)
 
 // const ctrlNetwork = require('../blockchain/network/info');
 // router.get('/network/chain-info', ctrlNetwork.getChainInfo)
