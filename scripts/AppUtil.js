@@ -8,6 +8,9 @@
 const path = require('path');
 const fs = require('fs');
 
+exports.getWalletPath = async (organization) => {   
+    return path.join(__dirname, '..', 'wallet', `${organization}-wallet`);
+}
 
 exports.buildCCPOrg1 = () => {
 	// load the common connection configuration file
