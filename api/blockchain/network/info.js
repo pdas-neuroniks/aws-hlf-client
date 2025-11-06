@@ -58,7 +58,7 @@ module.exports = {
             const network = await gateway.getNetwork(CHANNEL_NAME);
             consolelog("network checked")
             const contract = network.getContract('qscc');
-            consolelog("Contract received.")
+            consolelog("Contract received.", contract)
 
             /**
             GetChainInfo       string = "GetChainInfo"
@@ -70,6 +70,8 @@ module.exports = {
             */
 
             let results = await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME);
+            consolelog("Results received.")
+            consolelog(results)
             //let results = await contract.evaluateTransaction('getPeersStatus', CHANNEL_NAME);
 
             await gateway.disconnect();
