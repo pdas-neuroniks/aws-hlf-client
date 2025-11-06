@@ -20,6 +20,9 @@ sudo usermod -a -G docker $USER
 sleep 5
 wget https://go.dev/dl/go1.14.4.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.14.4.linux-amd64.tar.gz
+
+wget https://go.dev/dl/go1.15.7.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 go version
 

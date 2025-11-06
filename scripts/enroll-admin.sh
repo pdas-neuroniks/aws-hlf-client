@@ -1,8 +1,11 @@
 fabric-ca-client enroll \
-    -u 'https://ca.m-76kcdfjjmrerrgvqmqxk4hppdy.n-ur4arjlu2jg33grsypbqyvkgim.managedblockchain.us-east-1.amazonaws.com:30002' \
-    --id.name admin
-    --id.secret el0L$+BXf(:VAH1$%o3h[a-ged6A$+T%@
-    --tls.certfiles /home/ubuntu/resource/managedblockchain-tls-chain.pem -M /home/ubuntu/resource/admin-msp
+    -u 'https://admin:A6minPw8A6minPw@ca.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com:30002' 
+    --tls.certfiles /home/ubuntu/resource/managedblockchain-tls-chain.pem \
+    -M /home/ubuntu/resource/admin-msp
+
+cp -r /home/ubuntu/resource/admin-msp/signcerts /home/ubuntu/resource/admin-msp/admincerts
+
+
 
 curl https://ca.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com:30002/cainfo -k
 
@@ -20,3 +23,5 @@ docker exec cli configtxgen \
 
 
 /opt/home/admin-msp/cacerts:
+
+

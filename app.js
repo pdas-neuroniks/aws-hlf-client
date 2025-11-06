@@ -3,9 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config('./.env');
+console.log(process.env)
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./api/routes/routes');
 
 var app = express();
 
@@ -19,8 +20,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use((req, res, next) => {
+  
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log(`-- -- -- -- [${ip}] -- -- -- --\ninfo: ${req.method} ${req.url}`);
+  if(process.env.NODE_ENV === "development" || process.env.NODE_ENV === "staging"){
+    if (req.method == 'POST' || req.method == 'PUT' || req.method == 'DELETE') {
+      console.log(`[Body] ${JSON.stringify(req.body)}`);
+    }
+  }
+  res.once('finish', ()=>{console.log(`[Response] ${req.method} ${req.url} ${res.statusCode} ${res.statusMessage}`);});
+  next();
+});
+
+app.use('/api/bc', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
