@@ -8,7 +8,7 @@
 
 
 const adminUserId = 'admin';
-const adminUserPasswd = 'adminpw';
+const adminUserPasswd = 'A6minPw8A6minPw';
 
 /**
  *
