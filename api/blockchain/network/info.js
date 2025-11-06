@@ -10,6 +10,7 @@ const { StringDecoder } = require('string_decoder');
 
 // Helper
 const helper = require('../../../scripts/AppUtil');
+const CHANNEL_NAME = 'mychannel'
 
 
 function consolelog(message, param = '') {
@@ -50,12 +51,12 @@ module.exports = {
                 identity: _identity,
                 discovery: { enabled: true, asLocalhost: AS_LOCALHOST }
             }
-            
+            consolelog("connectOptions checked")
             const gateway = new Gateway();
             await gateway.connect(ccp, connectOptions);
-            
+            consolelog("gateway checked")
             const network = await gateway.getNetwork(CHANNEL_NAME);
-            
+            consolelog("network checked")
             const contract = network.getContract('qscc');
             consolelog("Contract received.")
 
