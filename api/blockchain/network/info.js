@@ -43,7 +43,7 @@ module.exports = {
                     errorMessage: `An identity for the user ${_identity} does not exist in the wallet.`
                 })
             }
-            //consolelog("Idetity checked")
+            consolelog("Idetity checked")
 
             const connectOptions = {
                 wallet,
@@ -57,7 +57,7 @@ module.exports = {
             const network = await gateway.getNetwork(CHANNEL_NAME);
             
             const contract = network.getContract('qscc');
-            //consolelog("Contract received.")
+            consolelog("Contract received.")
 
             /**
             GetChainInfo       string = "GetChainInfo"
