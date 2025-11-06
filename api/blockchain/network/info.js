@@ -30,7 +30,7 @@ module.exports = {
             const ccp = await helper.buildCCPOrg1()
             consolelog(ccp)
 
-            const walletPath = await helper.getWalletPath(organization)
+            const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
             const wallet = await Wallets.newFileSystemWallet(walletPath);
             
 
@@ -40,7 +40,7 @@ module.exports = {
                 return res.status(404).json({
                     status: false,
                     data: '',
-                    errorMessage: common.constructErrorMessage(`An identity for the user ${_identity} does not exist in the wallet.`)
+                    errorMessage: `An identity for the user ${_identity} does not exist in the wallet.`
                 })
             }
             //consolelog("Idetity checked")
