@@ -44,7 +44,7 @@ async function main() {
     const ca = new FabricCAClient(caUrl, { trustedRoots: caTlsCert, verify: false }, caName);
     console.log('ca',ca)
     // Enroll the admin user, and import the new identity into Secrets Manager
-    const enrollment = await ca.enroll({ enrollmentID: adminUserId, enrollmentSecret: adminPwd });
+    const enrollment = await ca.enroll({ enrollmentID: adminUserId, enrollmentSecret: 'A6minPw8A6minPw' });
     console.log('enrollment',enrollment)
 
     const privateKeyArnOutput = await utilities.putSecret(privateKeyArn, enrollment.key.toBytes());
