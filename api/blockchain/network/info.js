@@ -79,7 +79,7 @@ module.exports = {
             // await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME); // test call
             // let results = '' // await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME);
             consolelog("Results received.")
-            consolelog(await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME))
+            consolelog(await contract.evaluateTransaction('QueryCar', CHANNEL_NAME))
             //let results = await contract.evaluateTransaction('getPeersStatus', CHANNEL_NAME);
 
             await gateway.disconnect()

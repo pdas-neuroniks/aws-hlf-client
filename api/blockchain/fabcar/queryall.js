@@ -87,7 +87,9 @@ module.exports = {
             consolelog("Get-One-Car");
 
             let _identity = 'admin';
-            let carnumber = req.body.carnumber;
+            // let carnumber = req.body.carnumber;
+            let carnumber = req.query.CARNAME ? req.query.CARNAME : "";
+            consolelog("carnumber", carnumber)
 
             const ccp = await helper.buildCCPOrg1()
             
@@ -120,7 +122,7 @@ module.exports = {
             // consolelog("Contract received.", contract)
             const contract = network.getContract(CHAINCODE_NAME);
 
-            let results = await contract.evaluateTransaction('QueryAllCars', `${carnumber}`)
+            let results = await contract.evaluateTransaction('QueryCar', `${carnumber}`)
 
             await gateway.disconnect();
 
