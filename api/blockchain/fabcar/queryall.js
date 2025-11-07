@@ -154,7 +154,7 @@ module.exports = {
 
             const { carNumber, make, model, colour, owner } = req.body;
 
-            if(carNumber || make || model || colour || owner){
+            if(!carNumber || !make || !model || !colour || !owner){
                 return res.status(400).json({
                     status: false,
                     message: 'Missing required fields carNumber, make, model, colour, owner',
