@@ -88,7 +88,7 @@ module.exports = {
 
             let _identity = 'admin';
             // let carnumber = req.body.carnumber;
-            let carnumber = req.query.CARNAME ? req.query.CARNAME : "";
+            let carnumber = req.params.CARNAME ? req.params.CARNAME : "";
             consolelog("carnumber", carnumber)
 
             const ccp = await helper.buildCCPOrg1()
