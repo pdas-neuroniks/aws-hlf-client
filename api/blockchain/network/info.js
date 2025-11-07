@@ -49,7 +49,7 @@ module.exports = {
             const connectOptions = {
                 wallet,
                 identity: _identity,
-                discovery: { enabled: true, asLocalhost: true }
+                discovery: { enabled: true, asLocalhost: false }
             }
             consolelog("connectOptions checked", connectOptions)
             const gateway = new Gateway();
