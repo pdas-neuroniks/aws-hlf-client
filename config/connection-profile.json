@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "Apache-2.0",
     "channels": {
-        "phoenix": {
+        "mychannel": {
             "orderers": ["orderer.n-JYV5OVYRAZFKXL4BPWZHOK3T7Y.managedblockchain.us-east-1.amazonaws.com"],
             "peers": {
                 "nd-t7xd2md3efg6fjamlaimqhibwy.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com": {}
@@ -22,7 +22,7 @@
     "organizations": {
         "Blockcede-Dev0-Member": {
             "mspid": "m-3PV7AGMBBNAN3EQYF3X3LLDDQU",
-            "certificateAuthorities": ["m-3PV7AGMBBNAN3EQYF3X3LLDDQU"],
+            "certificateAuthorities": ["ca-org1"],
             "peers": [
                       "nd-t7xd2md3efg6fjamlaimqhibwy.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com"
             ]
@@ -54,7 +54,7 @@
         }
     },
     "certificateAuthorities": {
-        "m-3PV7AGMBBNAN3EQYF3X3LLDDQU": {
+        ca-org1: {
             "url": "https://ca.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com:30002",
             "mspid": "m-3PV7AGMBBNAN3EQYF3X3LLDDQU",
             "httpOptions": {
