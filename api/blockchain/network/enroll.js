@@ -1,4 +1,5 @@
 const express = require('express');
+const FabricCAServices = require('fabric-ca-client');
 const AWS = require('aws-sdk');
 const {buildCCPOrg1, getSecret} = require('../utils/AppUtil');
 const {buildCAClient} = require('../utils/CAUtil');
