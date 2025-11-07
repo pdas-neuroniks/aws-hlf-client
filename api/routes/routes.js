@@ -24,5 +24,6 @@ router.get('/ping', function(rew, res){
 const ctrlNetwork = require('../blockchain/fabcar/queryall');
 router.get('/fabcar/query-all', ctrlNetwork.queryAllCars)
 router.get('/fabcar/query-all/:CARNAME', ctrlNetwork.queryOneCar)
+router.post('/fabcar', ctrlNetwork.saveCar)
 
 module.exports = router;
