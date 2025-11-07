@@ -1,6 +1,0 @@
-{
-  "index": { "fields": ["createdAt"] },
-  "ddoc": "indexOrdersDoc",
-  "name": "created_at",
-  "type": "json"
-}
