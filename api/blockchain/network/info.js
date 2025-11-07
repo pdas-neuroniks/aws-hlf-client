@@ -57,8 +57,16 @@ module.exports = {
             consolelog("gateway checked")
             const network = await gateway.getNetwork(CHANNEL_NAME);
             consolelog("network checked")
-            const contract = network.getContract('qscc');
-            consolelog("Contract received.", contract)
+            // const contract = network.getContract('qscc');
+            // consolelog("Contract received.", contract)
+            const contract = network.getContract('mycc');
+
+            let results = await contract.evaluateTransaction('QueryAllCars')
+
+            await gateway.disconnect();
+
+            consolelog("GateWay Disconnected!!!!!");
+            consolelog("Results received.", results.toString())
 
             /**
             GetChainInfo       string = "GetChainInfo"
@@ -69,7 +77,7 @@ module.exports = {
 
             */
             // await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME); // test call
-            let results = '' // await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME);
+            // let results = '' // await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME);
             consolelog("Results received.")
             consolelog(await contract.evaluateTransaction('GetChainInfo', CHANNEL_NAME))
             //let results = await contract.evaluateTransaction('getPeersStatus', CHANNEL_NAME);
