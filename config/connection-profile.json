@@ -54,7 +54,7 @@
         }
     },
     "certificateAuthorities": {
-        ca-org1: {
+        "ca-org1": {
             "url": "https://ca.m-3pv7agmbbnan3eqyf3x3llddqu.n-jyv5ovyrazfkxl4bpwzhok3t7y.managedblockchain.us-east-1.amazonaws.com:30002",
             "mspid": "m-3PV7AGMBBNAN3EQYF3X3LLDDQU",
             "httpOptions": {
