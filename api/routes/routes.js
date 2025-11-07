@@ -21,7 +21,7 @@ router.get('/ping', function(rew, res){
 // const ctrlEnroll = require('../blockchain/network/enroll');
 // router.post('/network/enroll', ctrlEnroll.enroll)
 
-const ctrlNetwork = require('../blockchain/network/info');
-router.get('/network/chain-info', ctrlNetwork.getChainInfo)
+const ctrlNetwork = require('../blockchain/fabcar/queryall');
+router.get('/fabcar/query-all', ctrlNetwork.queryAllCars)
 
 module.exports = router;
