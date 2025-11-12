@@ -39,7 +39,7 @@ module.exports = {
             const createdAtUTC = moment.utc(createdAt).format('DD-MM-yyyy HH:mm:ss');
             const createdBy = 'admin'
             
-            const ccp = await helper.getCCP(process.env.MEMBER_ID)
+            const ccp = await helper.buildCCPOrg1()
 
             const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
             const wallet = await Wallets.newFileSystemWallet(walletPath);
