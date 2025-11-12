@@ -19,10 +19,11 @@ router.get('/ping', function(rew, res){
 })
 
 
-const ctrlNetwork = require('../blockchain/biologics/queryall');
-router.get('/biologics/query/:ORDERID', ctrlNetwork.queryOneOrder)
-router.get('/biologics/query', ctrlNetwork.queryAllOrders)
-// router.post('/biologics', ctrlNetwork.saveCar)
+const ctrlBiologicsQuery = require('../blockchain/biologics/queryall');
+router.get('/biologics/query/:ORDERID', ctrlBiologicsQuery.queryOneOrder)
+router.get('/biologics/query', ctrlBiologicsQuery.queryAllOrders)
+const ctrlBiologicsInvoke = require('../blockchain/biologics/add');
+router.post('/biologics', ctrlBiologicsInvoke.addOrder)
 
 // const ctrlEnroll = require('../blockchain/network/enroll');
 // router.post('/network/enroll', ctrlEnroll.enroll)
