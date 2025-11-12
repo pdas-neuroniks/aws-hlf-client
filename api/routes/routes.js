@@ -20,7 +20,7 @@ router.get('/ping', function(rew, res){
 
 
 const ctrlNetwork = require('../blockchain/biologics/queryall');
-// router.get('/biologics/query/:CARNAME', ctrlNetwork.queryOneCar)
+router.get('/biologics/query/:ORDERID', ctrlNetwork.queryOneOrder)
 router.get('/biologics/query', ctrlNetwork.queryAllOrders)
 // router.post('/biologics', ctrlNetwork.saveCar)
 
