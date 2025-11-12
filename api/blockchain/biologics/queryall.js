@@ -65,7 +65,7 @@ module.exports = {
 
             return res.status(200).json({
                 status: true,
-                resulsts: results.toString()
+                resulsts: JSON.parse(results.toString())
             })
 
 
@@ -130,7 +130,7 @@ module.exports = {
 
             return res.status(200).json({
                 status: true,
-                resulsts: results.toString()
+                resulsts: JSON.parse(results.toString())
             })
 
 
@@ -195,7 +195,7 @@ module.exports = {
 
             return res.status(200).json({
                 status: true,
-                resulsts: results.toString()
+                resulsts: JSON.parse(results.toString())
             })
 
 
