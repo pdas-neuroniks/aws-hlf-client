@@ -43,7 +43,6 @@ module.exports = {
 
             const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
             const wallet = await Wallets.newFileSystemWallet(walletPath);
-            //
 
             let identity = await wallet.get(createdBy);
             if (!identity) {
@@ -55,14 +54,12 @@ module.exports = {
                 })
             }
            
-
             const connectOptions = {
                 wallet,
                 identity: createdBy,
                 discovery: { enabled: true, asLocalhost: false }
             }
             
-
             const gateway = new Gateway();
             await gateway.connect(ccp, connectOptions);
             
@@ -101,6 +98,84 @@ module.exports = {
                 status: false,
                 data: null,
                 errorMessage: `${error.message}`
+            })
+        }
+    },
+
+    updateOrder: async function(req, res) {
+        try {
+
+            consolelog("Update Order")
+
+            // let carnumber = req.body.carnumber;
+            let orderId = req.params.ORDERID ? req.params.ORDERID : "";
+            consolelog("Order Id", orderId)
+
+            const createdAt = new Date()
+            const modifiedAtUTC = moment.utc(createdAt).format('DD-MM-yyyy HH:mm:ss')
+            const createdBy = 'admin';
+            
+
+            const ccp = await helper.buildCCPOrg1()
+
+            const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
+            const wallet = await Wallets.newFileSystemWallet(walletPath);
+            
+
+            let identity = await wallet.get(createdBy);
+            if (!identity) {
+                consolelog(`An identity for the user ${createdBy} does not exist in the wallet.`);
+                return res.status(404).json({
+                    status: false,
+                    data: null,
+                    errorMessage: common.constructErrorMessage(`An identity for the user ${createdBy} does not exist in the wallet.`)
+                })
+            }
+
+            const connectOptions = {
+                wallet,
+                identity: createdBy,
+                discovery: { enabled: true, asLocalhost: AS_LOCALHOST }
+            }
+
+            const gateway = new Gateway();
+            await gateway.connect(ccp, connectOptions);
+
+            const network = await gateway.getNetwork(CHANNEL_NAME);
+
+            const contract = network.getContract(CHAINCODE_NAME);
+
+            
+            const payload = {
+                ...req.body,
+                orderId,
+                modifiedAtUTC
+            }
+            await contract.submitTransaction('UpdateOrderStatus', JSON.stringify(payload));
+
+            await gateway.disconnect();
+
+            return res.status(200).json({
+                status: true,
+                data: {
+                    ...req.body,
+                    orderId,
+                    modifiedAtUTC
+                },
+                errorMessage: null
+            })
+
+            
+
+    
+            
+
+        } catch (error) {
+            console.error(error.message)
+            return res.status(500).json({
+                status: false,
+                data: null,
+                errorMessage: `${error.message}.`
             })
         }
     },

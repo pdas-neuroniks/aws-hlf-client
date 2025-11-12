@@ -24,6 +24,7 @@ router.get('/biologics/query/:ORDERID', ctrlBiologicsQuery.queryOneOrder)
 router.get('/biologics/query', ctrlBiologicsQuery.queryAllOrders)
 const ctrlBiologicsInvoke = require('../blockchain/biologics/add');
 router.post('/biologics', ctrlBiologicsInvoke.addOrder)
+router.put('/biologics/:ORDERID', ctrlBiologicsInvoke.updateOrder)
 
 // const ctrlEnroll = require('../blockchain/network/enroll');
 // router.post('/network/enroll', ctrlEnroll.enroll)
