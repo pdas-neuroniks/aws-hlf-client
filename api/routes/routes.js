@@ -18,12 +18,18 @@ router.get('/ping', function(rew, res){
     }
 })
 
+
+const ctrlNetwork = require('../blockchain/biologics/queryall');
+// router.get('/biologics/query/:CARNAME', ctrlNetwork.queryOneCar)
+router.get('/biologics/query', ctrlNetwork.queryAllCars)
+// router.post('/biologics', ctrlNetwork.saveCar)
+
 // const ctrlEnroll = require('../blockchain/network/enroll');
 // router.post('/network/enroll', ctrlEnroll.enroll)
 
-const ctrlNetwork = require('../blockchain/fabcar/queryall');
+/* const ctrlNetwork = require('../blockchain/fabcar/queryall');
 router.get('/fabcar/query-all', ctrlNetwork.queryAllCars)
 router.get('/fabcar/query-all/:CARNAME', ctrlNetwork.queryOneCar)
-router.post('/fabcar', ctrlNetwork.saveCar)
+router.post('/fabcar', ctrlNetwork.saveCar) */
 
 module.exports = router;
