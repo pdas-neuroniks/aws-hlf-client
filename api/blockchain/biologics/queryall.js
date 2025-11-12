@@ -18,7 +18,7 @@ function consolelog(message, param = '') {
 
 module.exports = {
 
-    queryAllCars: async function(req, res) {
+    queryAllOrders: async function(req, res) {
         try {
 
             consolelog("Get-All-Orders");
@@ -81,10 +81,10 @@ module.exports = {
         }
     },
 
-    queryOneCar: async function(req, res) {
+    queryOneOrder: async function(req, res) {
         try {
 
-            consolelog("Get-One-Car");
+            consolelog("Get-One-Order");
 
             let _identity = 'admin';
             // let carnumber = req.body.carnumber;
@@ -147,77 +147,4 @@ module.exports = {
     },
 
     
-    saveCar: async function(req, res) {
-        try {
-
-            consolelog("Save-Car");
-
-            const { carNumber, make, model, colour, owner } = req.body;
-
-            if(!carNumber || !make || !model || !colour || !owner){
-                return res.status(400).json({
-                    status: false,
-                    message: 'Missing required fields carNumber, make, model, colour, owner',
-                })
-            }
-
-            let _identity = 'admin';
-
-            const ccp = await helper.buildCCPOrg1()
-            
-            const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
-            const wallet = await Wallets.newFileSystemWallet(walletPath);
-            
-            let identity = await wallet.get(_identity);
-            if (!identity) {
-                consolelog(`An identity for the user ${_identity} does not exist in the wallet.`);
-                return res.status(404).json({
-                    status: false,
-                    data: '',
-                    errorMessage: `An identity for the user ${_identity} does not exist in the wallet.`
-                })
-            }
-            
-
-            const connectOptions = {
-                wallet,
-                identity: _identity,
-                discovery: { enabled: true, asLocalhost: false }
-            }
-            
-            const gateway = new Gateway();
-            await gateway.connect(ccp, connectOptions);
-            
-            const network = await gateway.getNetwork(CHANNEL_NAME);
-            
-            // const contract = network.getContract('qscc');
-            // consolelog("Contract received.", contract)
-            const contract = network.getContract(CHAINCODE_NAME);
-
-            let results = await contract.submitTransaction('CreateCar', carNumber, make, model, colour, owner)
-
-            await gateway.disconnect();
-
-            consolelog("GateWay Disconnected!!!!!");
-
-            
-
-            return res.status(200).json({
-                status: true,
-                message: 'Car Saved Successfully',
-                errorMessage: null
-            })
-
-        
-        } catch (error) {
-            console.error(error.message)
-
-            return res.status(400).json({
-                status: true,
-                chaininfo: null,
-                errorMessage: JSON.stringify(error)
-            })
-
-        }
-    },
 }
