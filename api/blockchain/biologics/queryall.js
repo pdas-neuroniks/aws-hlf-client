@@ -57,7 +57,7 @@ module.exports = {
             // consolelog("Contract received.", contract)
             const contract = network.getContract(CHAINCODE_NAME);
 
-            let results = await contract.evaluateTransaction('QueryAllCars')
+            let results = await contract.evaluateTransaction('GetAllOrders')
 
             await gateway.disconnect();
 
