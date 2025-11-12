@@ -39,3 +39,4 @@ templates
 package-lock.json
 restart.sh 
 setup.sh
+config/.bashrc
