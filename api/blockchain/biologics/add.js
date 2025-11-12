@@ -59,7 +59,7 @@ module.exports = {
             const connectOptions = {
                 wallet,
                 identity: createdBy,
-                discovery: { enabled: true, asLocalhost: AS_LOCALHOST }
+                discovery: { enabled: true, asLocalhost: false }
             }
             
 
