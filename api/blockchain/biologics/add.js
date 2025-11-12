@@ -17,7 +17,7 @@ const helper = require('../../../scripts/AppUtil');
 
 
 function consolelog(message, param = '') {
-    if (DEBUG) console.log('[biologics:add]', message, param)
+    if (true) console.log('[biologics:add]', message, param)
 }
 
 
