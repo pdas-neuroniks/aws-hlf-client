@@ -65,7 +65,7 @@ module.exports = {
 
             return res.status(200).json({
                 status: true,
-                resulsts: JSON.parse(results.toString())
+                results: JSON.parse(results.toString())
             })
 
 

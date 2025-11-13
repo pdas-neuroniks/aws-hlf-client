@@ -9,7 +9,6 @@ import (
 
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 	"github.com/hyperledger/fabric-samples/asset-transfer-basic/chaincode-go/chaincode"
-	// "github.com/pdas-neuroniks/biologics-golang-chaincode/chaincode/chaincode-go"
 )
 
 func main() {

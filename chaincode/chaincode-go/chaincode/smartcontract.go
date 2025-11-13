@@ -26,7 +26,7 @@ const (
 	ENTERED_IN_ERROR          = "entered-in-error"
 )
 
-// SmartContract provides functions for managing an Asset
+// SmartContract provides functions for managing a Order
 type SmartContract struct {
 	contractapi.Contract
 }
@@ -42,7 +42,7 @@ type StatusHistoryEntry struct {
 	Timestamp string `json:"timestamp"` // Using string for consistency with original JS
 }
 
-// Order defines the structure for an asset
+// Order defines the structure for an Order
 type Order struct {
 	OrderID        string               `json:"orderId"`
 	TherapyType    string               `json:"therapyType"`
@@ -116,7 +116,7 @@ func isValidStatus(status string) bool {
 	return ok
 }
 
-// InitLedger adds a base set of assets to the ledger
+// InitLedger adds a base set of Orders to the ledger
 func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	assets := []Order{
 		{OrderID: "orderid001", TherapyType: "blue"},
@@ -141,18 +141,18 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 func (c *SmartContract) CreateOrder(ctx contractapi.TransactionContextInterface, inputData string) (*Order, error) {
 	var orderData Order
 
-	// 1. Unmarshal input string into the Order struct
+	// Unmarshal input string into the Order struct
 	err := json.Unmarshal([]byte(inputData), &orderData)
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal input data: %v", err)
 	}
 
-	// 2. Validate essential fields
+	// Validate essential fields
 	if orderData.OrderID == "" || orderData.CurrentStatus == "" {
 		return nil, fmt.Errorf("orderId and status must not be empty")
 	}
 
-	// 3. Construct the initial order object (mirroring JS logic)
+	// Construct the initial order object (mirroring JS logic)
 	order := Order{
 		OrderID:        orderData.OrderID,
 		TherapyType:    orderData.TherapyType,
@@ -173,13 +173,13 @@ func (c *SmartContract) CreateOrder(ctx contractapi.TransactionContextInterface,
 		CMSCertNumber: orderData.CMSCertNumber,
 	}
 
-	// 4. Marshal the Go struct back into JSON bytes
+	// Marshal the Go struct back into JSON bytes
 	orderJSON, err := json.Marshal(order)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal order data: %v", err)
 	}
 
-	// 5. Put the state to the ledger
+	// Put the state to the ledger
 	err = ctx.GetStub().PutState(order.OrderID, orderJSON)
 	if err != nil {
 		return nil, fmt.Errorf("failed to put state: %v", err)
@@ -343,52 +343,24 @@ func (c *SmartContract) GetOrderHistory(ctx contractapi.TransactionContextInterf
 // GetAllOrdersWithPagination retrieves all orders using a rich query with pagination and sorting.
 // Note: In Go, arguments are typically passed directly, not as a single JSON string, but for direct
 // translation compatibility and flexibility, we will accept strings and convert as needed.
-func (c *SmartContract) GetAllOrdersWithPagination(ctx contractapi.TransactionContextInterface, pageSizeStr string, bookmark, sortField, sortOrder string) (*PaginatedQueryResponse, error) {
+func (c *SmartContract) GetAllOrdersWithPagination(ctx contractapi.TransactionContextInterface, queryStr string, bookmark string, pageSizeStr string) (*PaginatedQueryResponse, error) {
 
 	// Parse pageSize
+	//  sortField, sortOrder string
 	pageSize, err := strconv.ParseInt(pageSizeStr, 10, 32)
 	if err != nil {
 		return nil, fmt.Errorf("pageSize must be a valid integer: %v", err)
 	}
 
-	// Default sorting logic
-	defaultSortField := sortField
-	if defaultSortField == "" {
-		defaultSortField = "createdAt"
-	}
-	defaultSortOrder := sortOrder
-	if defaultSortOrder == "" {
-		defaultSortOrder = "desc"
-	}
-
-	// Construct the rich query
-	query := map[string]interface{}{
-		"selector": map[string]interface{}{
-			"orderId": map[string]string{
-				"$exists": "true",
-			},
-		},
-		"sort": []map[string]string{
-			{defaultSortField: defaultSortOrder},
-		},
-	}
-
-	fmt.Print("Query, ", query)
-
-	queryStringBytes, err := json.Marshal(query)
-	if err != nil {
-		return nil, fmt.Errorf("failed to marshal query: %v", err)
-	}
-	queryString := string(queryStringBytes)
-
-	fmt.Print("Query String, ", queryString)
+	// query := `{"selector":{"OrderID": "A0001"},"sort":[{"createdAt":"desc"}]}`
 
 	// Execute the query with pagination
 	resultsIterator, metadata, err := ctx.GetStub().GetQueryResultWithPagination(
-		queryString,
+		queryStr,
 		int32(pageSize),
 		bookmark,
 	)
+	fmt.Print("resultsIterator", resultsIterator)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get query result with pagination: %v", err)
 	}

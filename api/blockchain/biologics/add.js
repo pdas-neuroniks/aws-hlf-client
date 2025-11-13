@@ -165,17 +165,88 @@ module.exports = {
                 errorMessage: null
             })
 
-            
-
-    
-            
-
         } catch (error) {
             console.error(error.message)
             return res.status(500).json({
                 status: false,
                 data: null,
                 errorMessage: `${error.message}.`
+            })
+        }
+    },
+
+    getOrderByPagination: async function(req, res) {
+        try {
+
+            consolelog("=================");
+            consolelog("Get Order By Pagination");
+            consolelog("=================");
+
+            /**docId, representativeEmail, dataHash, version, metadata, createdAt*/
+            
+            const { orderId, bookmark, pageSize } = req.body;
+
+            const pagesize = pageSize || "10";
+            // const createdAt = new Date();
+            // const createdAtUTC = moment.utc(createdAt).format('DD-MM-yyyy HH:mm:ss');
+            const createdBy = 'admin'
+            
+            const ccp = await helper.buildCCPOrg1()
+
+            const walletPath = await helper.getWalletPath(process.env.MEMBER_ID)
+            const wallet = await Wallets.newFileSystemWallet(walletPath);
+
+            let identity = await wallet.get(createdBy);
+            if (!identity) {
+                consolelog(`An identity for the user ${createdBy} does not exist in the wallet.`);
+                return res.status(404).json({
+                    status: false,
+                    data: null,
+                    errorMessage: common.constructErrorMessage(`An identity for the user ${createdBy} does not exist in the wallet.`)
+                })
+            }
+           
+            const connectOptions = {
+                wallet,
+                identity: createdBy,
+                discovery: { enabled: true, asLocalhost: false }
+            }
+            
+            const gateway = new Gateway();
+            await gateway.connect(ccp, connectOptions);
+            
+
+            const network = await gateway.getNetwork(CHANNEL_NAME);
+            const contract = network.getContract(CHAINCODE_NAME);
+            
+
+            /** -c '{"function": "GetAllOrdersWithPagination", "args":["{\"selector\":{\"orderId\":\"'${ORDER_ID}'\"}}", "", "10"]}' */
+
+            let queryString = {}
+            queryString.selector = {};
+            queryString.selector.orderId = orderId;
+            // queryString.selector.createdBy = createdBy;
+            // queryString.sort = [{"modifiedAt":"desc"}]
+
+            let results = await contract.submitTransaction('GetAllOrdersWithPagination', JSON.stringify(queryString), bookmark || "", pagesize);
+
+
+            await gateway.disconnect();
+            consolelog("Gateway Disconnected!")
+
+            return res.status(200).json({
+                status: true,
+                results: JSON.parse(results.toString()),
+                errorMessage: null
+            })
+
+        } catch (error) {
+            console.error(error.message)
+
+            return res.status(500).json({
+                status: false,
+                data: null,
+                errorMessage: `${error.message}`
             })
         }
     },

@@ -22,10 +22,10 @@ router.get('/ping', function(rew, res){
 const ctrlBiologicsQuery = require('../blockchain/biologics/queryall');
 router.get('/biologics/query/:ORDERID', ctrlBiologicsQuery.queryOneOrder)
 router.get('/biologics/query', ctrlBiologicsQuery.queryAllOrders)
-// router.get('/biologics/list/:QUERY', ctrlBiologicsQuery.queryOrdersByPagination)
 router.get('/biologics/history/:ORDERID', ctrlBiologicsQuery.getOrderHistory)
 
 const ctrlBiologicsInvoke = require('../blockchain/biologics/add');
+router.post('/biologics/pagination', ctrlBiologicsInvoke.getOrderByPagination)
 router.post('/biologics', ctrlBiologicsInvoke.addOrder)
 router.put('/biologics/:ORDERID', ctrlBiologicsInvoke.updateOrder)
 
