@@ -9,7 +9,7 @@ const os = require('os');
 
 // Constant
 const CHANNEL_NAME = 'mychannel'
-const CHAINCODE_NAME = 'biologics_go_v01'
+const CHAINCODE_NAME = 'biologics_go_v02'
 
 
 // Helper
