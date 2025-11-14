@@ -224,7 +224,8 @@ module.exports = {
 
             let queryString = {}
             queryString.selector = {};
-            queryString.selector.orderId = orderId;
+            // queryString.selector.orderId = orderId;
+            queryString.selector.docType = "order_records";
             // queryString.selector.createdBy = createdBy;
             // queryString.sort = [{"modifiedAt":"desc"}]
 

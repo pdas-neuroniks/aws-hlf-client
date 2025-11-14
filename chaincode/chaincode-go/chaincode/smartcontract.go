@@ -55,6 +55,7 @@ type Order struct {
 	CreatedAt      string               `json:"createdAt"` // Using string for consistency with original JS
 	CCNCode        string               `json:"ccnCode"`
 	CMSCertNumber  string               `json:"cmsCertNumber"`
+	DocType        string               `json:"docType"`
 }
 
 // StatusUpdatePayload is used for unmarshalling the input to updateOrderStatus
@@ -171,6 +172,7 @@ func (c *SmartContract) CreateOrder(ctx contractapi.TransactionContextInterface,
 		CreatedAt:     orderData.CreatedAt,
 		CCNCode:       orderData.CCNCode,
 		CMSCertNumber: orderData.CMSCertNumber,
+		DocType:       "order_records",
 	}
 
 	// Marshal the Go struct back into JSON bytes
