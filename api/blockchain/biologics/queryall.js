@@ -7,8 +7,8 @@ const fabricprotos = require('fabric-protos');
 
 // Helper
 const helper = require('../../../scripts/AppUtil');
-const CHANNEL_NAME = 'mychannel'
-const CHAINCODE_NAME = 'biologics_go_v02'
+const CHANNEL_NAME = process.env.CHANNEL
+const CHAINCODE_NAME = process.env.CC_NAME
 
 
 function consolelog(message, param = '') {

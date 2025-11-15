@@ -8,8 +8,8 @@ const os = require('os');
 
 
 // Constant
-const CHANNEL_NAME = 'mychannel'
-const CHAINCODE_NAME = 'biologics_go_v02'
+const CHANNEL_NAME = process.env.CHANNEL
+const CHAINCODE_NAME = process.env.CC_NAME
 
 
 // Helper
