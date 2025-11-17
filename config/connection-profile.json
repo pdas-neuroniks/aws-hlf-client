@@ -4,9 +4,9 @@
     "license": "Apache-2.0",
     "channels": {
         "mychannel": {
-            "orderers": ["orderer.n-J5XETHBVTBH43NBJ6C3KNKVW2I.managedblockchain.us-east-1.amazonaws.com"],
+            "orderers": ["orderer.n-QFI6YBAKYFCXTAASJCP5LRWQDM.managedblockchain.us-east-1.amazonaws.com"],
             "peers": {
-                "nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com": {}
+                "nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com": {}
             },
             "connection": {
                 "timeout": {
@@ -21,49 +21,49 @@
     },
     "organizations": {
         "Blockcede-Dev-Member": {
-            "mspid": "m-ROJKPIHIVFHNNOMUGGWTEHYGIY",
+            "mspid": "m-GT45ZTXUSRDEVJUMV7ENWEVJBM",
             "certificateAuthorities": ["ca-org1"],
             "peers": [
-                      "nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com"
+                      "nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com"
             ]
         }
     },
     "peers": {
-        "nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com": {
+        "nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com": {
             "tlsCACerts": {
                 "path": "/home/ubuntu/resource/managedblockchain-tls-chain.pem"
             },
-            "url": "grpcs://nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com:30003",
-            "eventUrl": "grpcs://nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com:30004",
+            "url": "grpcs://nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com:30003",
+            "eventUrl": "grpcs://nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com:30004",
             "grpcOptions": {
-                "ssl-target-name-override": "nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com",
-		        "hostnameOverride": "nd-5d23cmm6wrdjjafeqf3jqftnma.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com"
+                "ssl-target-name-override": "nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com",
+		        "hostnameOverride": "nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com"
             }
         }
     },
     "orderers": {
-        "orderer.n-J5XETHBVTBH43NBJ6C3KNKVW2I.managedblockchain.us-east-1.amazonaws.com": {
+        "orderer.n-QFI6YBAKYFCXTAASJCP5LRWQDM.managedblockchain.us-east-1.amazonaws.com": {
             "tlsCACerts": {
                 "path": "/home/ubuntu/resource/managedblockchain-tls-chain.pem"
             },
-            "url": "grpcs://orderer.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com:30001",
+            "url": "grpcs://orderer.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com:30001",
             "grpcOptions": {
-                "ssl-target-name-override": "orderer.n-J5XETHBVTBH43NBJ6C3KNKVW2I.managedblockchain.us-east-1.amazonaws.com",
+                "ssl-target-name-override": "orderer.n-QFI6YBAKYFCXTAASJCP5LRWQDM.managedblockchain.us-east-1.amazonaws.com",
                 "discovery-as-localhost": "false"
             }
         }
     },
     "certificateAuthorities": {
         "ca-org1": {
-            "url": "https://ca.m-rojkpihivfhnnomuggwtehygiy.n-j5xethbvtbh43nbj6c3knkvw2i.managedblockchain.us-east-1.amazonaws.com:30002",
-            "mspid": "m-ROJKPIHIVFHNNOMUGGWTEHYGIY",
+            "url": "https://ca.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com:30002",
+            "mspid": "m-GT45ZTXUSRDEVJUMV7ENWEVJBM",
             "httpOptions": {
                 "verify": false
             },
             "tlsCACerts": {
                 "path": "/home/ubuntu/resource/managedblockchain-tls-chain.pem"
             },
-            "caName": "m-ROJKPIHIVFHNNOMUGGWTEHYGIY"
+            "caName": "m-GT45ZTXUSRDEVJUMV7ENWEVJBM"
         }
     }
 }
