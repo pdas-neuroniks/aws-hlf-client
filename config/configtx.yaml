@@ -13,10 +13,10 @@ Organizations:
         # Name is the key by which this org will be referenced in channel
         # configuration transactions.
         # Name can include alphanumeric characters as well as dots and dashes.
-        Name: m-GT45ZTXUSRDEVJUMV7ENWEVJBM
+        Name: m-FYKAJCZTVVFXPJHBCWNL2N4XV4
         # ID is the key by which this org's MSP definition will be referenced.
         # ID can include alphanumeric characters as well as dots and dashes.
-        ID: m-GT45ZTXUSRDEVJUMV7ENWEVJBM
+        ID: m-FYKAJCZTVVFXPJHBCWNL2N4XV4
         # SkipAsForeign can be set to true for org definitions which are to be
         # inherited from the orderer system channel during channel creation.  This
         # is especially useful when an admin of a single org without access to the

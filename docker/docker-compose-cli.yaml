@@ -12,9 +12,9 @@ services:
       - CORE_CHAINCODE_KEEPALIVE=10
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_ROOTCERT_FILE=/opt/home/managedblockchain-tls-chain.pem
-      - CORE_PEER_LOCALMSPID=m-GT45ZTXUSRDEVJUMV7ENWEVJBM
+      - CORE_PEER_LOCALMSPID=m-FYKAJCZTVVFXPJHBCWNL2N4XV4
       - CORE_PEER_MSPCONFIGPATH=/opt/home/admin-msp
-      - CORE_PEER_ADDRESS=nd-zwcdlx3xnbddtomr2nkzct2h3u.m-gt45ztxusrdevjumv7enwevjbm.n-qfi6ybakyfcxtaasjcp5lrwqdm.managedblockchain.us-east-1.amazonaws.com:30003
+      - CORE_PEER_ADDRESS=nd-w7ptut7jxbffneylrixlwvifjy.m-fykajcztvvfxpjhbcwnl2n4xv4.n-34u4jaxrdfa4radgyulmnijxw4.managedblockchain.us-east-1.amazonaws.com:30003
     working_dir: /opt/home
     command: /bin/bash
     volumes:
